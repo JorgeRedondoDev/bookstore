@@ -1,10 +1,26 @@
-import Book from "./Book";
 import React, { useState } from "react";
+import Book from "./Book";
+import PopUpBook from "./PopUpBook";
 
 const Library = ({ data }) => {
   const [order, setOrder] = useState("TA");
+  const [popUp, setpopUp] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+
+  function pupUpFunction(el) {
+    setSelectedBook(el);
+    setpopUp(true);
+  }
+
   return (
     <>
+      {/* PopUp that render the selected book */}
+      {popUp ? (
+        <PopUpBook trigger={popUp} setTrigger={setpopUp} data={selectedBook} />
+      ) : (
+        ""
+      )}
+
       <button onClick={() => setOrder("TA")}>Titulo ascendente</button>
       <button onClick={() => setOrder("TD")}>Titulo descendente</button>
       <button onClick={() => setOrder("AA")}>Autor ascendente</button>
@@ -25,11 +41,7 @@ const Library = ({ data }) => {
             }
           })
           .map((el, key) => (
-            <div
-              key={key}
-              className="book"
-              onClick={() => console.log(el.isbn)}
-            >
+            <div key={key} className="book" onClick={() => pupUpFunction(el)}>
               <Book data={el} />
             </div>
           ))}
