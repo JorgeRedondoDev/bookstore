@@ -1,3 +1,6 @@
+body {
+  background-color: #1a2238;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 7rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}
+
+.book {
+  background-color: #f4db7d;
+  border-radius: 15px;
+  width: auto;
+  height: auto;
+}
+.book-buttons {
+  padding: 10px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }

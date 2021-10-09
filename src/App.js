@@ -1,23 +1,30 @@
 import "./App.css";
+import Library from "./components/Library";
+import React, { useEffect, useState } from "react";
 import db from "./firebase/config";
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
-import React, { useEffect } from "react";
+
+import { collection, getDocs } from "firebase/firestore";
 
 function App() {
-  useEffect(() => {
-    const obtenerDatos = async () => {
-      const datos = await getDocs(collection(db, "books"));
+  const [books, setBooks] = useState([]);
 
-      datos.forEach((element) => {
-        console.log(element.data());
+  useEffect(() => {
+    const dataArray = [];
+
+    const datos = async () => {
+      const getBooks = await getDocs(collection(db, "books"));
+      console.log("in");
+      getBooks.forEach((doc) => {
+        dataArray.push(doc.data());
       });
+      return setBooks(dataArray);
     };
-    obtenerDatos();
+    datos();
   }, []);
 
   return (
     <div className="App">
-      <h1>Test</h1>
+      <Library data={books} />
     </div>
   );
 }
