@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Book from "./Book";
-import PopUpBook from "./PopUpBook";
+import SelectedBook from "./SelectedBook";
 
 const Library = ({ data }) => {
   const [order, setOrder] = useState("TA");
@@ -16,7 +16,11 @@ const Library = ({ data }) => {
     <>
       {/* PopUp that render the selected book */}
       {popUp ? (
-        <PopUpBook trigger={popUp} setTrigger={setpopUp} data={selectedBook} />
+        <SelectedBook
+          trigger={popUp}
+          setTrigger={setpopUp}
+          data={selectedBook}
+        />
       ) : (
         ""
       )}

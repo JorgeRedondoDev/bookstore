@@ -1,15 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
   background-color: #1a2238;
+  font-family: "Roboto";
 }
 .App {
   text-align: center;
 }
 
 .container {
+  padding: 1rem;
   display: grid;
   gap: 1rem;
-  grid-auto-rows: 7rem;
+  grid-auto-rows: 8rem;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}
+.text {
+  display: block;
+  padding-top: 10px;
 }
 .popup {
   position: fixed;
@@ -22,16 +32,37 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+input {
+  width: auto;
+  background-color: #9daaf2;
+  border: none;
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px;
+}
+button {
+  margin: 10px;
+}
+.close-button {
+  background-image: url(./img/x-lg-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-color: #f4db7d;
+  border: none;
+  padding: 10px;
+  fill: red;
+}
 .book {
   background-color: #f4db7d;
   border-radius: 15px;
-  width: 200px;
-  height: auto;
+  min-width: 200px;
 }
 .book-buttons {
   padding: 10px 10px 0;
   display: flex;
   align-items: center;
   justify-content: right;
+}
+.inputs-group {
+  display: flex;
+  flex-direction: column;
 }

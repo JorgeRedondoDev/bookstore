@@ -1,22 +1,15 @@
 import "./App.css";
 import Library from "./components/Library";
+import AddBook from "./components/AddBook";
+
 import React, { useEffect, useState } from "react";
 import db from "./firebase/config";
 
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 function App() {
   const [books, setBooks] = useState([]);
-
-  async function add() {
-    const docRef = await addDoc(collection(db, "books"), {
-      name: "test",
-      author: "jorge",
-      isbn: "123123123",
-    });
-
-    console.log("Document written with ID: ", docRef.id);
-  }
+  const [isAddVisible, setIsAddVisible] = useState(false);
 
   useEffect(() => {
     const dataArray = [];
@@ -35,7 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => add()}> Añadir libro</button>
+      <button onClick={() => setIsAddVisible(true)}>Añadir Libro</button>
+      {isAddVisible ? <AddBook setisVisible={setIsAddVisible} /> : ""}
+
       <Library data={books} />
     </div>
   );
