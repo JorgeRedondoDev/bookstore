@@ -72,7 +72,7 @@ function SelectedBook(props) {
 
   return (
     <div className="popup">
-      <div className="book">
+      <div className="selected-book">
         <button
           className="close-button"
           onClick={() => props.setTrigger(false)}

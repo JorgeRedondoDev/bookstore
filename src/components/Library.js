@@ -46,7 +46,8 @@ const Library = ({ data }) => {
           })
           .map((el, key) => (
             <div key={key} className="book" onClick={() => pupUpFunction(el)}>
-              <Book data={el} />
+              <b className="title-book">Titulo:</b>
+              <p className="text-book">{el.name}</p>
             </div>
           ))}
       </div>
