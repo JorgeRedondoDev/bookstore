@@ -29,7 +29,11 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => setIsAddVisible(true)}>Añadir Libro</button>
-      {isAddVisible ? <InputBook setisVisible={setIsAddVisible} /> : ""}
+      {isAddVisible ? (
+        <InputBook setisVisible={setIsAddVisible} data={[]} />
+      ) : (
+        ""
+      )}
 
       <Library data={books} />
     </div>

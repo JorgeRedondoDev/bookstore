@@ -2,10 +2,10 @@ import React, { useReducer, useEffect } from "react";
 import db from "../firebase/config";
 import { setDoc, doc } from "firebase/firestore";
 
-const InputBook = ({ setisVisible }) => {
+const InputBook = ({ setisVisible, data, isbn }) => {
   const [inputValues, setInputValues] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
-    { name: "", author: "", isbn: "" }
+    { name: data.name, author: data.author, isbn: data.isbn }
   );
 
   useEffect(() => {
@@ -19,9 +19,9 @@ const InputBook = ({ setisVisible }) => {
 
   async function add() {
     if (
-      inputValues.name === "" ||
-      inputValues.author === "" ||
-      inputValues.isbn === ""
+      inputValues.name === undefined ||
+      inputValues.author === undefined ||
+      inputValues.isbn === undefined
     ) {
     } else {
       await setDoc(doc(db, "books", inputValues.isbn), {
@@ -40,31 +40,39 @@ const InputBook = ({ setisVisible }) => {
   return (
     <div className="popup" id="popup">
       <div className="selected-book">
-        <button
-          className="close-button"
-          onClick={() => setisVisible(false)}
-        ></button>
-        <div className="inputus">
-          <input
-            type="text"
-            name="name"
-            placeholder="Titulo"
-            onChange={handleOnChange}
-          />
-          <input
-            type="text"
-            name="author"
-            placeholder="Autor"
-            onChange={handleOnChange}
-          />
-          <input
-            type="text"
-            name="isbn"
-            placeholder="ISBN"
-            onChange={handleOnChange}
-          />
+        <div className="selected-book-content">
+          <div className="inputs-group ">
+            <b>Titulo </b>
+            <input
+              type="text"
+              name="name"
+              placeholder={data.name}
+              onChange={handleOnChange}
+            />
+            <b>Autor </b>
+            <input
+              type="text"
+              name="author"
+              placeholder={data.author}
+              onChange={handleOnChange}
+            />
+            <b>ISBN </b>
+            {isbn ? (
+              <input placeholder={data.isbn} readOnly />
+            ) : (
+              <input
+                type="text"
+                name="isbn"
+                placeholder={data.isbn}
+                onChange={handleOnChange}
+              />
+            )}
+          </div>
+          <div className="buttons-group">
+            <button onClick={() => add()}>Añadir</button>
+            <button onClick={() => setisVisible(false)}>Cancelar</button>
+          </div>
         </div>
-        <button onClick={() => add()}>Añadir</button>
       </div>
     </div>
   );

@@ -6,6 +6,20 @@ body {
   background-color: #1a2238;
   font-family: "Roboto";
 }
+
+input {
+  width: 10rem;
+  border: none;
+  background-color: #cb8ab8c2;
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px 3rem;
+}
+
+b {
+  font-size: 20px;
+}
+
 .App {
   text-align: center;
 }
@@ -26,7 +40,7 @@ body {
 }
 .content-book {
   width: 5rem;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .popup {
@@ -40,27 +54,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-input {
-  width: auto;
-  background-color: #9daaf2;
-  border: none;
-  border-radius: 30px;
-  padding: 5px;
-  margin: 5px;
-}
-button {
-  margin: 10px;
-}
-.close-button {
-  position: absolute;
-  background-image: url(./img/x-lg-svgrepo-com.svg);
-  width: auto;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-  fill: red;
-}
 
 .selected-book {
   background-image: url("./img/book.svg");
@@ -71,6 +64,9 @@ button {
 .content-selected-book {
   margin-top: 3rem;
   margin-right: 2rem;
+}
+.selected-book-content {
+  margin-top: 3rem;
 }
 .text {
   width: 150px;
@@ -86,4 +82,22 @@ button {
 .inputs-group {
   display: flex;
   flex-direction: column;
+}
+.inputs-group > b {
+  margin-right: 40px;
+}
+.buttons-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-left: 50px;
+}
+.buttons-group > button {
+  margin: 5px 1px;
+  padding: 5px 2px;
+  background-color: #cb8ab8c2;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  border-bottom-left-radius: 0;
 }
