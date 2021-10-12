@@ -6,24 +6,52 @@ body {
   background-color: #1a2238;
   font-family: "Roboto";
 }
-
 input {
-  width: 10rem;
-  border: none;
-  background-color: #cb8ab8c2;
-  border-radius: 30px;
+  margin: 5px 10px;
   padding: 5px;
-  margin: 5px 3rem;
+  background-color: #ffaaaa;
+  border-radius: 7px;
+  border-bottom-left-radius: 0;
+  border: 4px solid black;
 }
 
 b {
   font-size: 20px;
 }
+button {
+  margin: 5px 10px;
+  padding: 5px;
+  background-color: #ffaaaa;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  border-bottom-left-radius: 0;
+  border: 4px solid black;
+}
+button:hover {
+  padding: 8px;
+}
+
+.buttons-group > button {
+  margin: 5px 1px;
+  padding: 5px 2px;
+  background-color: #cb8ab8c2;
+  border: none;
+}
+
+.buttons-group > button :hover {
+  margin: 20px;
+}
 
 .App {
   text-align: center;
 }
-
+.nav {
+  position: sticky;
+  top: 10px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
 .container {
   padding: 1rem;
   display: grid;
@@ -40,7 +68,7 @@ b {
 }
 .content-book {
   width: 5rem;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
 }
 
 .popup {
@@ -86,18 +114,17 @@ b {
 .inputs-group > b {
   margin-right: 40px;
 }
+.inputs-group > input {
+  width: 10rem;
+  border: none;
+  background-color: #cb8ab8c2;
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px 3rem;
+}
 .buttons-group {
   display: flex;
   flex-direction: row;
   gap: 10px;
   margin-left: 50px;
-}
-.buttons-group > button {
-  margin: 5px 1px;
-  padding: 5px 2px;
-  background-color: #cb8ab8c2;
-  cursor: pointer;
-  border: none;
-  border-radius: 7px;
-  border-bottom-left-radius: 0;
 }

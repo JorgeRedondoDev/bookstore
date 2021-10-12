@@ -10,6 +10,9 @@ import { collection, getDocs } from "firebase/firestore";
 function App() {
   const [books, setBooks] = useState([]);
   const [isAddVisible, setIsAddVisible] = useState(false);
+  const [order, setOrder] = useState(false);
+  const [orderStatus, setOrderStatus] = useState("↓");
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const dataArray = [];
@@ -26,16 +29,32 @@ function App() {
     datos();
   }, []);
 
+  function orderFunction() {
+    setOrder(!order);
+    order ? setOrderStatus("↓") : setOrderStatus("↑");
+  }
+
   return (
     <div className="App">
-      <button onClick={() => setIsAddVisible(true)}>Añadir Libro</button>
+      <div className="nav">
+        <button onClick={() => orderFunction()}>Ordenar {orderStatus}</button>
+        <input
+          type="text"
+          placeholder="Buscar titulo"
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </div>
+      <div>
+        <button onClick={() => setIsAddVisible(true)}>Añadir Libro</button>
+      </div>
+
       {isAddVisible ? (
         <InputBook setisVisible={setIsAddVisible} data={[]} />
       ) : (
         ""
       )}
 
-      <Library data={books} />
+      <Library data={books} filter={filter} order={order} />
     </div>
   );
 }

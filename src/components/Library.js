@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import SelectedBook from "./SelectedBook";
 
-const Library = ({ data }) => {
+const Library = ({ data, filter, order }) => {
+  const filterBook = filter;
+  const orderBook = order;
   const [popUp, setpopUp] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
 
@@ -24,14 +26,19 @@ const Library = ({ data }) => {
       )}
 
       <div className="container">
-        {data.map((el, key) => (
-          <div key={key} className="book" onClick={() => pupUpFunction(el)}>
-            <div className="content-book">
-              <b>Titulo:</b>
-              <p>{el.name}</p>
+        {data
+          .filter((word) => word.name.includes(filterBook))
+          .sort(function (a, b) {
+            if (!orderBook) return a.name > b.name ? 1 : -1;
+            return a.name < b.name ? 1 : -1;
+          })
+          .map((el, key) => (
+            <div key={key} className="book" onClick={() => pupUpFunction(el)}>
+              <div className="content-book">
+                <p>{el.name}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );
