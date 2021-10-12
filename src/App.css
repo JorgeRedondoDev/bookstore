@@ -24,11 +24,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.title-book {
-  margin-top: 3rem;
-}
-.text-book {
-  width: 2.5rem;
+.content-book {
+  width: 5rem;
+  padding-top: 3rem;
 }
 
 .popup {
@@ -54,18 +52,29 @@ button {
   margin: 10px;
 }
 .close-button {
+  position: absolute;
   background-image: url(./img/x-lg-svgrepo-com.svg);
+  width: auto;
   background-repeat: no-repeat;
-  background-color: #f4db7d;
+  background-color: transparent;
   border: none;
   padding: 10px;
   fill: red;
 }
 
 .selected-book {
-  background-color: #f4db7d;
-  border-radius: 15px;
-  min-width: 200px;
+  background-image: url("./img/book.svg");
+  background-size: cover;
+  width: 20rem;
+  height: 25rem;
+}
+.content-selected-book {
+  margin-top: 3rem;
+  margin-right: 2rem;
+}
+.text {
+  width: 150px;
+  padding-left: 60px;
 }
 
 .book-buttons {

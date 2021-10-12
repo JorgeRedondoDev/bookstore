@@ -1,20 +1,36 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import db from "../firebase/config";
 import { setDoc, doc } from "firebase/firestore";
 
-const AddBook = ({ setisVisible }) => {
+const InputBook = ({ setisVisible }) => {
   const [inputValues, setInputValues] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     { name: "", author: "", isbn: "" }
   );
 
+  useEffect(() => {
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+
+    function handleClick(e) {
+      if (e.target.id === "popup") setisVisible(false);
+    }
+  });
+
   async function add() {
-    setDoc(doc(db, "books", inputValues.isbn), {
-      name: inputValues.name,
-      author: inputValues.author,
-      isbn: inputValues.isbn,
-    });
-    setisVisible(false);
+    if (
+      inputValues.name === "" ||
+      inputValues.author === "" ||
+      inputValues.isbn === ""
+    ) {
+    } else {
+      await setDoc(doc(db, "books", inputValues.isbn), {
+        name: inputValues.name,
+        author: inputValues.author,
+        isbn: inputValues.isbn,
+      });
+      window.location.reload();
+    }
   }
 
   const handleOnChange = (event) => {
@@ -22,8 +38,8 @@ const AddBook = ({ setisVisible }) => {
     setInputValues({ [name]: value });
   };
   return (
-    <div className="popup">
-      <div className="book">
+    <div className="popup" id="popup">
+      <div className="selected-book">
         <button
           className="close-button"
           onClick={() => setisVisible(false)}
@@ -54,4 +70,4 @@ const AddBook = ({ setisVisible }) => {
   );
 };
 
-export default AddBook;
+export default InputBook;

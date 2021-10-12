@@ -1,6 +1,6 @@
 import "./App.css";
 import Library from "./components/Library";
-import AddBook from "./components/AddBook";
+import InputBook from "./components/InputBook";
 
 import React, { useEffect, useState } from "react";
 import db from "./firebase/config";
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => setIsAddVisible(true)}>Añadir Libro</button>
-      {isAddVisible ? <AddBook setisVisible={setIsAddVisible} /> : ""}
+      {isAddVisible ? <InputBook setisVisible={setIsAddVisible} /> : ""}
 
       <Library data={books} />
     </div>
