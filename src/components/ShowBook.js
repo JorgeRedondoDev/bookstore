@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import InputBook from "./InputBook";
-
 import db from "../firebase/config";
 import { doc, deleteDoc } from "firebase/firestore";
 
-function SelectedBook(props) {
+function ShowBook(props) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -62,4 +61,4 @@ function SelectedBook(props) {
   );
 }
 
-export default SelectedBook;
+export default ShowBook;
